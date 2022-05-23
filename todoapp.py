@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_mysqldb import MySQL
 
 app=Flask(__name__)
@@ -10,9 +10,9 @@ mysql= MySQL(app)
 
 @app.route("/")
 def index():
-    return 'HOLA MUNDO'
+    return render_template('index.html')
 
-@app.route("/add")
+@app.route("/add", method=)
 def add():
     return 'Agregar productos a la lista'
 
