@@ -1,12 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista Tareas-JSSM</title>
-</head>
-<body>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <title>LIST TASK-JSSM</title>
     
+</head>
+
+<body class="col-18 col-m-6 col-lg-12", style="text-align:center">
+    <h1 style="text-align:center", class="p-3 mb-2 bg-black text-white">LISTA DE TAREAS</h1>
+    <!-- CONTROLADOR 1 - INGRESO DE DATOS-->
+    <center>
+        <form method="post" action="{{url_for('send')}}">
+            <div class="form-row">
+                <!--FORMULARIO DONDE SE VAN A INGRESAR LOS DATOS-->
+              <div class="form-group col-md-6">
+                <label>EMAIL</label>
+                <input type="email" class="form-control" placeholder="EMAIL" name="task_email">
+              </div>
+              <!--LABEL DONDE DESPLEGAMOS UNA LISTA DE OPCIONES-->
+              <div class="form-group col-md-6">
+                <label>PRIORIDAD</label>
+                <select class="form-control" name="task_priority">
+                <option value="", class="p-2 bg-white text-white"></option>
+                <option value="BAJO", class="p-2 bg-success text-white", style="text-align:center">BAJO</option>
+                <option value="MEDIO", class="p-2 bg-warning text-white", style="text-align:center">MEDIO</option>
+                <option value="ALTO", class="p-2 bg-danger text-white", style="text-align:center">ALTO</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label>TAREA</label>
+                <input type="text" class="form-control" placeholder="TAREA" name="task_description">
+            </div>
+            <!--BOTON PARA ENVIAR DATOS A LA TABLA-->
+            <button type="submit" class="btn btn-success">REGISTRAR</button>
+        </form>
+
+    </center>
 </body>
 </html>
