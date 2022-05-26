@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,11 +12,12 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
     <title>LIST TASK-JSSM</title>
-    
 </head>
 
 <body class="col-18 col-m-6 col-lg-12", style="text-align:center">
+    
     <h1 style="text-align:center", class="p-3 mb-2 bg-black text-white">LISTA DE TAREAS</h1>
+
     <!-- CONTROLADOR 1 - INGRESO DE DATOS-->
     <center>
         <form method="post" action="{{url_for('send')}}">
@@ -45,7 +45,38 @@
             <!--BOTON PARA ENVIAR DATOS A LA TABLA-->
             <button type="submit" class="btn btn-success">REGISTRAR</button>
         </form>
-
     </center>
+    
+    <!--CONTROLADOR 2 - TABLA DE DATOS-->
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <!--INGRESAMOS LAS VARIABLES QUE VAMOS A RECIBIR-->
+                <th scope="col">DESCRIPCION DE LA TAREA</th>
+                <th scope="col">EMAIL</th>
+                <th scope="col">PRIORIDAD</th>
+                <th scope="col">ELIMINAR</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--USAMOS EL FOR PARA PODER ACCEDER A LA LISTA-->
+            {% for tarea in task_list %}
+            <tr>
+                <!--MUESTRA LA TAREA INGRESADA EN EL FORMULARIO-->
+                <th>{{tarea.task_description}}</th>
+                <!--MUESTRA EL EMAIL INGRESADO EN EL FORMULARIO-->
+                <th>{{tarea.task_email}}</th>
+                <!--MUESTRA LA PRIORIDAD INGRESADA EN EL FORMULARIO-->
+                <th>{{tarea.task_priority}}</th>
+                <!--BOTON QUE NOS PERMITE ELIMINAR LOS DATOS DE UNA FILA-->
+                <th><button oneclick="limpiar()">limpiar</button></th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!--BOTON BORRAR TODOS LOS CAMPOS DE LA TABLA-->
+    <form action="{{url_for('delete')}}" method="post" class="card-body">
+        <button type="submit" class="btn btn-danger mb-2">BORRAR</button>
+    </form>
 </body>
 </html>
